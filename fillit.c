@@ -16,5 +16,11 @@ int		main(int ac, char **ag)
 {
 	if (usage(ac) == 0)
 		return (0);
+	char buf[BUF_SIZE];
+	ac = open(ag[1], O_RDONLY);
+	ac = read(ac, buf, BUF_SIZE);
+	
+	ft_putendl(buf);
+	return (0);
 }
 

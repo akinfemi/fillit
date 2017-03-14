@@ -12,8 +12,14 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/fcntl.h>
+#  include <unistd.h>
+# define BUF_SIZE 4096
 
 void		ft_putendl(char const *s);
 int			usage(int ac);
+void		ft_putnbr(int c);
 
 #endif
