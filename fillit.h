@@ -15,11 +15,14 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/fcntl.h>
-#  include <unistd.h>
+# include <unistd.h>
 # define BUF_SIZE 4096
+# include <stdlib.h>
 
 void		ft_putendl(char const *s);
+int			isvalid(char *str);
 int			usage(int ac);
 void		ft_putnbr(int c);
+char		**ft_split(char const *s, char c);
 
 #endif
