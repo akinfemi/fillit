@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static int		get_ntet(char const *str, char delim)
 {
@@ -68,8 +67,6 @@ char **ft_split(char const *s, char c)
 	while (i < n_tet)
 	{
 		ans[i] = next_tet(&s, c);
-		printf("%s\n", ans[i]);
-		printf("-------------------------\n");
 		i++;
 	}
 	ans[i] = 0;
