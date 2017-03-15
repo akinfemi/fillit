@@ -14,6 +14,8 @@ static int contains(const char *big, const char *small)
 {
     while (*big && *small && (*big == *small))
     {
+        if (*(big + 1) == '\n')
+            big++;
         big++;
         small++;
         if (*small == '\0')

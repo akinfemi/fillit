@@ -14,25 +14,25 @@
 
 char **gen_patterns(char **patterns)
 {
-	patterns[0] = "###.\n..#";
-	patterns[1] = ".#..\n.#..\n##";
-	patterns[2] = "#...\n###";
-	patterns[3] = "##..\n#...\n#";
-	patterns[4] = "###.\n#";
-	patterns[5] = "##..\n.#..\n.#";
-	patterns[6] = "..#.\n###";
-	patterns[7] = "#...\n#...\n##";
-	patterns[8] = "###.\n.#";
-	patterns[9] = ".#..\n##..\n.#";
-	patterns[10] = ".#..\n###";
-	patterns[11] = "#...\n##..\n#";
-	patterns[12] = ".##.\n##";
-	patterns[13] = "#...\n##..\n.#";
-	patterns[14] = "##..\n##";
-	patterns[15] = "#...\n#...\n#...\n#";
+	patterns[0] = "###...#";
+	patterns[1] = ".#...#..##";
+	patterns[2] = "#...###";
+	patterns[3] = "##..#...#";
+	patterns[4] = "###.#";
+	patterns[5] = "##...#...#";
+	patterns[6] = "..#.###";
+	patterns[7] = "#...#...##";
+	patterns[8] = "###..#";
+	patterns[9] = ".#..##...#";
+	patterns[10] = ".#..###";
+	patterns[11] = "#...##..#";
+	patterns[12] = ".##.##";
+	patterns[13] = "#...##...#";
+	patterns[14] = "##..##";
+	patterns[15] = "#...#...#...#";
 	patterns[16] = "####";
-	patterns[17] = ".#..\n##..\n#";
-	patterns[18] = "##..\n.##";
+	patterns[17] = ".#..##..#";
+	patterns[18] = "##...##";
 	patterns[19] = "\0";
 	return (patterns);
 }

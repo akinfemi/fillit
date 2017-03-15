@@ -2,7 +2,7 @@
 #include <stdio.h>
 int main() {
   
-  char *str = "....\n###.\n..#.\n....\n";
+  char *str = "..##\n....\n....\n..##\n\n...#\n..#.\n.#..\n#...\n";
   char **sd = ft_split(str,'\n');
   while(*sd)
   {
