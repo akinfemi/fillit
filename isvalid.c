@@ -10,6 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fillit.h"
+
+char **gen_patterns(char **patterns)
+{
+	patterns[0] = "###.\n..#";
+	patterns[1] = ".#..\n.#..\n##";
+	patterns[2] = "#...\n###";
+	patterns[3] = "##..\n#...\n#";
+	patterns[4] = "###.\n#";
+	patterns[5] = "##..\n.#..\n.#";
+	patterns[6] = "..#.\n###";
+	patterns[7] = "#...\n#...\n##";
+	patterns[8] = "###.\n.#";
+	patterns[9] = ".#..\n##..\n.#";
+	patterns[10] = ".#..\n###";
+	patterns[11] = "#...\n##..\n#";
+	patterns[12] = ".##.\n##";
+	patterns[13] = "#...\n##..\n.#";
+	patterns[14] = "##..\n##";
+	patterns[15] = "#...\n#...\n#...\n#";
+	patterns[16] = "####";
+	patterns[17] = ".#..\n##..\n#";
+	patterns[18] = "##..\n.##";
+	patterns[19] = "\0";
+	return (patterns);
+}
+
+int		isvalidpattern(char *str)
+{
+	char **patterns;
+	int		i;
+	
+	i = -1;
+	patterns = (char**)malloc(sizeof(char *) * 20);
+	while (++i < 20)
+		patterns[i] = (char *)malloc(sizeof(char) * 18);
+	patterns = gen_patterns(patterns);
+	while (*patterns)
+	{
+		if (ft_strinstr(*patterns, str) == 1)
+			return (1);
+		patterns++;
+	}
+	return (0);
+}
+
 int		isvalid(char *str)
 {
 	int		i;
@@ -33,12 +79,7 @@ int		isvalid(char *str)
 			return (0);
 		i++;
 	}
-	if (i != 19 || block != 4 || (pattern(str) == 0))
+	if (i != 19 || block != 4 || (isvalidpattern(str) == 0))
 		return (0);
 	return (1);
-}
-
-int		pattern(char *str)
-{
-	
 }

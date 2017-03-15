@@ -24,5 +24,6 @@ int			isvalid(char *str);
 int			usage(int ac);
 void		ft_putnbr(int c);
 char		**ft_split(char const *s, char c);
+int			ft_strinstr(const char *big, const char *little);
 
 #endif
