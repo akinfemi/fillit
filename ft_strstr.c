@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
 static int contains(const char *big, const char *small)
 {
     while (*big && *small && (*big == *small))
@@ -26,21 +24,13 @@ static int contains(const char *big, const char *small)
     return (0);
 }
 
-char        *ft_strstr(const char *big, const char *little)
+int     ft_strinstr(const char *big, const char *little)
 {
-    char    *ptr;
-
-    ptr = NULL;
-    if (*little == '\0')
-        return ((char *) big);
     while (*big && *little)
     {
         if (*big == *little && contains(big, little) == 1)
-		{
-            ptr = (char *) big;
-			return (ptr);
-		}
+			return (1);
         big++;
     }
-    return (ptr);
+    return (0);
 }

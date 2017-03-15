@@ -49,7 +49,7 @@ int		isvalidpattern(char *str)
 	patterns = gen_patterns(patterns);
 	while (*patterns)
 	{
-		if (ft_strinstr(*patterns, str) == 1)
+		if (ft_strinstr(str,*patterns) == 1)
 			return (1);
 		patterns++;
 	}
