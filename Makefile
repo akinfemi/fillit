@@ -12,7 +12,7 @@
 
 NAME = fillit
 
-SOURCE = fillit.c funcs.c
+SOURCE = fillit.c funcs.c split.c ft_strstr.c isvalid.c
 
 LIB = libft.a
 
@@ -20,8 +20,9 @@ O_FILES = $(SOURCE:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	@gcc -Wall -Wextra -Werror $(SOURCE) $(LIB) -o $(NAME)
+$(NAME): $(O_FILES)
+	@gcc -c -o $(O_FILES) $(SOURCE) fillit.h
+	@gcc -Wall -Wextra -Werror -o $(0_FILES) $(SOURCE) 
 
 clean:
 	@rm -f $(O_FILES)
