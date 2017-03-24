@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 05:18:43 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/03/10 05:20:25 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/03/24 14:31:11 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int			usage(int ac);
 void		ft_putnbr(int c);
 char		**ft_split(char const *s, char c);
 int			ft_strinstr(const char *big, const char *little);
+int			check(char **str);
 
 #endif
