@@ -26,5 +26,8 @@ void		ft_putnbr(int c);
 char		**ft_split(char const *s, char c);
 int			ft_strinstr(const char *big, const char *little);
 int			check(char **str);
+//char		**gen_map(size_t size);
+void		place_tetrimino(char *tetrimino);
+char		*gen_1_map(int size);
 
 #endif

@@ -15,13 +15,18 @@
 int		main(int ac, char **ag)
 {
 	char	**tetris;
+	char	*map;
+	int		map_size;
 
+	map_size = 2;
 	if (usage(ac) == 0)
 		return (0);
 	char buf[BUF_SIZE];
 	ac = read(open(ag[1], O_RDONLY) , buf, BUF_SIZE);
 	if (!(tetris = ft_split(buf, '\n')) || check(tetris) == 0)
 		return (0);
-	ft_putendl(*tetris);
+	map = gen_1_map(map_size);
+	ft_putendl(map);
+
 	return (0);
 }
