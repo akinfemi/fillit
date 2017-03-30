@@ -11,22 +11,69 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-
+#include <stdio.h>
 int		main(int ac, char **ag)
 {
 	char	**tetris;
 	char	*map;
 	int		map_size;
+	char buf[BUF_SIZE];
 
-	map_size = 2;
 	if (usage(ac) == 0)
 		return (0);
-	char buf[BUF_SIZE];
 	ac = read(open(ag[1], O_RDONLY) , buf, BUF_SIZE);
 	if (!(tetris = ft_split(buf, '\n')) || check(tetris) == 0)
 		return (0);
-	map = gen_1_map(map_size);
-	ft_putendl(map);
+	map_size = ft_m_sqrt(4 * get_ntet(buf, '\n'));
+	printf("Map Size: %d\nNumber of Tets: %d\n", map_size, get_ntet(buf, '\n'));
+/*	map = gen_1_map(map_size);
+	tetris = config_tets(tetris);
+	if (until(&map, tetris, map_size))
+		ft_putendl(map);
+	else
+		ft_putendl("No solution");
+*/	return (0);
+}
 
-	return (0);
+int		num_tets(char **tetriminos)
+{
+	int		i;
+
+	i = 0;
+	while (tetriminos[i])
+		i++;
+	return (i);
+}
+
+int		ft_m_sqrt(int nb)
+{
+	int	i;
+
+	i = 0;
+	while (i * i < nb)
+		i++;
+	return (i);
+}
+
+char	**config_tets(char **tet)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = 0;
+	while (tet[++i] != '\0')
+		tet[i] = get_pattern(tet[i]);
+	i = 0;
+	while (tet[i] != '\0')
+	{
+		while(tet[i][j] != '\0')
+		{
+			(tet[i][j] == '#') ? (tet[i][j] += 30 + i) : (tet[i][j] += 0);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (tet);
 }

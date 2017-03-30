@@ -83,3 +83,29 @@ int		isvalid(char *str)
 		return (0);
 	return (1);
 }
+
+char		*get_pattern(char *str)
+{
+	char 	**patterns;
+	int		i;
+	char 	*tet;
+
+	i = -1;
+	tet = NULL;
+	patterns = (char**)malloc(sizeof(char *) * 20);
+	while (++i < 20)
+		patterns[i] = (char *)malloc(sizeof(char) * 18);
+	patterns = gen_patterns(patterns);
+	i = 0;
+	while (patterns[i])
+	{
+		if (ft_strinstr(str, patterns[i]) == 1)
+		{
+			tet = ft_strdup(patterns[i]);
+			free(patterns);
+			return (tet);
+		}
+		i++;
+	}
+	return (tet);
+}

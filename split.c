@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-static int		get_ntet(char const *str, char delim)
+int			get_ntet(char const *str, char delim)
 {
 	int	i;
 	while(*str == delim || *str == ' ' || *str == '\t')

@@ -32,52 +32,6 @@ int			check(char **tetriminos)
 	}
 	return (1);
 }
-/*
-char		**gen_map(size_t size)
-{
-	char	**map;
-	size_t	i;
-	int		j;
-
-	i = 0;
-	j = size;
-	map = (char **)malloc(sizeof(char) * size + 1);
-	map[size] = "\0";
-	while (i < size)
-	{
-		j = size;
-		map[i] = (char *)malloc(sizeof(char) * size + 1);
-		map[i][size] = '\0';
-		while (--j >= 0)
-			map[i][j] = '.';
-		printf("%s\n", map[i]);
-		i++;
-	}
-	return (map);
-}
-
-void		place_tetrimino(char **map, int row, int col, char *tetrimino)
-{
-	int		x;
-	int		y;
-
-	x = row;
-	y = col;
-	while (*tetrimino)
-	{
-		if (*tetrimino == '.')
-		{
-			tetrimino++;
-			x++;
-		}
-		else if (*tetrimino != '.' && map[x][y] == '.')
-		{
-			map[x][y] = *tetrimino;
-			tetrimino++;
-			x++;
-		}
-	}
-}*/
 
 char		*gen_1_map(int size)
 {
@@ -97,26 +51,57 @@ char		*gen_1_map(int size)
 	return (map);
 }
 
-void		place_tetrimino(char *map, char *tetrimino, int loc)
+void		place_tetrimino(char **m, char *tetrimino, int loc, int size)
 {
+	char	*map;
+	int		col;
+	int		row;
+	int		count;
+
+	map = *m;
+	size++;
+	(loc > size) ? (row = loc / size) : (row = 0);
+	(loc < size) ? (col = loc) : (col = loc % size);
+	count = 0;
 	while (*tetrimino)
 	{
-		if (*tetrimino == '.')
+		if (count == 4)
 		{
-			tetrimino++;
-			loc++;
+			row ++;
+			loc = col + row * size;
+			(count == 4) ? (count = 0) : 0;
 		}
-		else
-			map[loc] = *tetrimino;
+		if (*tetrimino != '.')
+			map[loc - 1] = *tetrimino;
+		tetrimino++;
+		loc++;
+		count++;
 	}
 }
 
-int			is_safe(char *map, char *tetrimino, int loc)
+int			is_safe(char *map, char *tetrimino, int loc, int size)
 {
+	int		col;
+	int		row;
+	int		count;
+
+	size++;
+	(loc > size) ? (row = loc / size) : (row = 0);
+	(loc < size) ? (col = loc) : (col = loc % size);
+	count = 0;
 	while (*tetrimino)
 	{
-		if (*tetrimino != '.' && *tetrimino != '\n' && map[loc] != '.')
+		if (count == 4)
+		{
+			row ++;
+			loc = col + row * size;
+			(count == 4) ? (count = 0) : 0;
+		}
+		if (*tetrimino != '.' && map[loc - 1] != '.')
 			return (0);
 		tetrimino++;
+		loc++;
+		count++;
 	}
+	return (1);
 }

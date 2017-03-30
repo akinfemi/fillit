@@ -12,7 +12,7 @@
 
 NAME = fillit
 
-SOURCE = fillit.c funcs.c split.c ft_strstr.c isvalid.c
+SOURCE = fillit.c funcs.c split.c ft_strstr.c isvalid.c remove_tet.c solve.c
 
 LIB = libft.a
 
