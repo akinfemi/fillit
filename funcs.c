@@ -9,7 +9,7 @@
 /*   Updated: 2017/03/24 14:34:57 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include "fillit.h"
 
 int			usage(int ac)
@@ -27,7 +27,10 @@ int			check(char **tetriminos)
 	while (*tetriminos)
 	{
 		if (isvalid(*tetriminos) == 0)
+		{
+			ft_putendl("error");
 			return (0);
+		}
 		tetriminos++;
 	}
 	return (1);

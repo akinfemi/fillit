@@ -15,13 +15,16 @@
 int			get_ntet(char const *str, char delim)
 {
 	int	i;
-	while(*str == delim || *str == ' ' || *str == '\t')
-		str++;
+	
 	i = 0;
 	while (*str)
 	{
 		if ((*str == delim) && (*(str+1) == delim || *(str+1) == '\0'))
+		{
+			if ((*(str+1) == delim) && (*(str+2) == delim || *(str+2) == '\0'))
+				return (0);
 			i++;
+		}
 		str++;
 	}
 	return (i);
@@ -59,6 +62,11 @@ char **ft_split(char const *s, char c)
 	int		i;
 
 	n_tet = get_ntet(s, c);
+	if (n_tet == 0)
+	{
+		ft_putendl("error");
+		return (0);
+	}
 	ans = 0;
 	i = 0;
 	ans = (char **) malloc(sizeof(char *) * n_tet + 1);

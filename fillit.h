@@ -18,6 +18,7 @@
 # include <unistd.h>
 # define BUF_SIZE 4096
 # include <stdlib.h>
+# include <string.h>
 
 void		ft_putendl(char const *s);
 int			isvalid(char *str);
@@ -39,5 +40,7 @@ int			solve(char **map, char **tet, int map_size);
 char		**config_tets(char **tets);
 int			until(char **map, char **tet, int map_size);
 int			get_ntet(char const *str, char delim);
+void		ft_putstr(char *str);
+void		*ft_memalloc(size_t size);
 
 #endif

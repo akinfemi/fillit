@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
+
 int		main(int ac, char **ag)
 {
 	char	**tetris;
@@ -25,24 +25,13 @@ int		main(int ac, char **ag)
 	if (!(tetris = ft_split(buf, '\n')) || check(tetris) == 0)
 		return (0);
 	map_size = ft_m_sqrt(4 * get_ntet(buf, '\n'));
-	printf("Map Size: %d\nNumber of Tets: %d\n", map_size, get_ntet(buf, '\n'));
-/*	map = gen_1_map(map_size);
+	map = gen_1_map(map_size);
 	tetris = config_tets(tetris);
 	if (until(&map, tetris, map_size))
-		ft_putendl(map);
+		ft_putstr(map);
 	else
 		ft_putendl("No solution");
-*/	return (0);
-}
-
-int		num_tets(char **tetriminos)
-{
-	int		i;
-
-	i = 0;
-	while (tetriminos[i])
-		i++;
-	return (i);
+	return (0);
 }
 
 int		ft_m_sqrt(int nb)

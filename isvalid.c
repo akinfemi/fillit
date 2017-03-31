@@ -43,15 +43,15 @@ int		isvalidpattern(char *str)
 	int		i;
 	
 	i = -1;
-	patterns = (char**)malloc(sizeof(char *) * 20);
+	patterns = (char**)ft_memalloc(sizeof(char *) * 20);
 	while (++i < 20)
-		patterns[i] = (char *)malloc(sizeof(char) * 18);
+		patterns[i] = (char *)ft_memalloc(sizeof(char) * 18);
 	patterns = gen_patterns(patterns);
-	while (*patterns)
+	i = -1;
+	while (++i < 19)
 	{
-		if (ft_strinstr(str,*patterns) == 1)
+		if (ft_strinstr(str,patterns[i]) == 1)
 			return (1);
-		patterns++;
 	}
 	return (0);
 }
