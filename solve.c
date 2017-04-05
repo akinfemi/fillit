@@ -2,7 +2,7 @@
 
 int		until(char **map, char **tet, int map_size)
 {
-	while(!solve(map, tet, map_size))
+	while (!solve(map, tet, map_size))
 	{
 		free(*map);
 		*map = NULL;

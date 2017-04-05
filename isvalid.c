@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-char **gen_patterns(char **patterns)
+char		**gen_patterns(char **patterns)
 {
 	patterns[0] = "###...#";
 	patterns[1] = ".#...#..##";
@@ -37,11 +37,11 @@ char **gen_patterns(char **patterns)
 	return (patterns);
 }
 
-int		isvalidpattern(char *str)
+int			isvalidpattern(char *str)
 {
-	char **patterns;
+	char	**patterns;
 	int		i;
-	
+
 	i = -1;
 	patterns = (char**)ft_memalloc(sizeof(char *) * 20);
 	while (++i < 20)
@@ -50,13 +50,13 @@ int		isvalidpattern(char *str)
 	i = -1;
 	while (++i < 19)
 	{
-		if (ft_strinstr(str,patterns[i]) == 1)
+		if (ft_strinstr(str, patterns[i]) == 1)
 			return (1);
 	}
 	return (0);
 }
 
-int		isvalid(char *str)
+int			isvalid(char *str)
 {
 	int		i;
 	int		block;
@@ -65,7 +65,7 @@ int		isvalid(char *str)
 	i = 0;
 	block = 0;
 	count = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] == '#')
 			block++;
@@ -86,9 +86,9 @@ int		isvalid(char *str)
 
 char		*get_pattern(char *str)
 {
-	char 	**patterns;
+	char	**patterns;
 	int		i;
-	char 	*tet;
+	char	*tet;
 
 	i = -1;
 	tet = NULL;

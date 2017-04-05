@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                      :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,16 @@
 
 #include "fillit.h"
 
-int			get_ntet(char const *str, char delim)
+int			get_ntet(char const *str, char dl)
 {
 	int	i;
-	
+
 	i = 0;
 	while (*str)
 	{
-		if ((*str == delim) && (*(str+1) == delim || *(str+1) == '\0'))
+		if ((*str == dl) && (*(str + 1) == dl || *(str + 1) == '\0'))
 		{
-			if ((*(str+1) == delim) && (*(str+2) == delim || *(str+2) == '\0'))
+			if ((*(str + 1) == dl) && (*(str + 2) == dl || *(str + 2) == '\0'))
 				return (0);
 			i++;
 		}
@@ -32,19 +32,19 @@ int			get_ntet(char const *str, char delim)
 
 static char	*next_tet(char const **st, char delim)
 {
-	int		i;
+	int			i;
 	char const	*str;
-	char	*tet;
+	char		*tet;
 
 	i = 0;
 	tet = 0;
 	str = *st;
-	while(*str == delim || *str == ' ' || *str == '\t')
+	while (*str == delim || *str == ' ' || *str == '\t')
 		str++;
-	while(!(str[i] == delim && (str[i + 1] == delim || str[i + 1] == '\0')))
+	while (!(str[i] == delim && (str[i + 1] == delim || str[i + 1] == '\0')))
 		i++;
-	tet = (char *) malloc(sizeof(char) * i + 1);
-	i=0;
+	tet = (char *)malloc(sizeof(char) * i + 1);
+	i = 0;
 	while (!(str[i] == delim && (str[i + 1] == delim || str[i + 1] == '\0')))
 	{
 		tet[i] = str[i];
@@ -55,7 +55,7 @@ static char	*next_tet(char const **st, char delim)
 	return (tet);
 }
 
-char **ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**ans;
 	int		n_tet;
@@ -69,7 +69,7 @@ char **ft_split(char const *s, char c)
 	}
 	ans = 0;
 	i = 0;
-	ans = (char **) malloc(sizeof(char *) * n_tet + 1);
+	ans = (char **)malloc(sizeof(char *) * n_tet + 1);
 	if (!ans)
 		return (0);
 	while (i < n_tet)

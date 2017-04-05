@@ -47,7 +47,7 @@ char		*gen_1_map(int size)
 	while (--len >= 0)
 	{
 		if (len == size || (len - size) % (size + 1) == 0)
-			map[len] ='\n';
+			map[len] = '\n';
 		else
 			map[len] = '.';
 	}
@@ -70,7 +70,7 @@ void		place_tetrimino(char **m, char *tetrimino, int loc, int size)
 	{
 		if (count == 4)
 		{
-			row ++;
+			row++;
 			loc = col + row * size;
 			(count == 4) ? (count = 0) : 0;
 		}
@@ -96,7 +96,7 @@ int			is_safe(char *map, char *tetrimino, int loc, int size)
 	{
 		if (count == 4)
 		{
-			row ++;
+			row++;
 			loc = col + row * size;
 			(count == 4) ? (count = 0) : 0;
 		}

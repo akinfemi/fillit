@@ -2,7 +2,7 @@
 
 char	get_char(char *tetrimino)
 {
-	while(*tetrimino)
+	while (*tetrimino)
 	{
 		if (ft_isalpha(*tetrimino) == 1)
 			return (*tetrimino);
@@ -20,7 +20,7 @@ void	remove_tetrimino(char **m, char *tetrimino)
 	map = *m;
 	while (*map)
 	{
-		if(*map == c)
+		if (*map == c)
 			*map = '.';
 		map++;
 	}

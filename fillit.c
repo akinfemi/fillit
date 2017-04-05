@@ -17,11 +17,11 @@ int		main(int ac, char **ag)
 	char	**tetris;
 	char	*map;
 	int		map_size;
-	char buf[BUF_SIZE];
+	char	buf[BUF_SIZE];
 
 	if (usage(ac) == 0)
 		return (0);
-	ac = read(open(ag[1], O_RDONLY) , buf, BUF_SIZE);
+	ac = read(open(ag[1], O_RDONLY), buf, BUF_SIZE);
 	if (!(tetris = ft_split(buf, '\n')) || check(tetris) == 0)
 		return (0);
 	map_size = ft_m_sqrt(4 * get_ntet(buf, '\n'));
@@ -56,7 +56,7 @@ char	**config_tets(char **tet)
 	i = 0;
 	while (tet[i] != '\0')
 	{
-		while(tet[i][j] != '\0')
+		while (tet[i][j] != '\0')
 		{
 			(tet[i][j] == '#') ? (tet[i][j] += 30 + i) : (tet[i][j] += 0);
 			j++;

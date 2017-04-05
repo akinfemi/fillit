@@ -10,29 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int contains(const char *big, const char *small)
+static int	contains(const char *big, const char *small)
 {
-    while (*big && *small && (*big == *small))
-    {
-        if (*(big + 1) == '\n')
-            big++;
-        big++;
-        small++;
-        if (*small == '\0')
-        {
-            return (1);
-        }
-    }
-    return (0);
+	while (*big && *small && (*big == *small))
+	{
+		if (*(big + 1) == '\n')
+			big++;
+		big++;
+		small++;
+		if (*small == '\0')
+		{
+			return (1);
+		}
+	}
+	return (0);
 }
 
-int     ft_strinstr(const char *big, const char *little)
+int			ft_strinstr(const char *big, const char *little)
 {
-    while (*big && *little)
-    {
-        if (*big == *little && contains(big, little) == 1)
+	while (*big && *little)
+	{
+		if (*big == *little && contains(big, little) == 1)
 			return (1);
-        big++;
-    }
-    return (0);
+		big++;
+	}
+	return (0);
 }
