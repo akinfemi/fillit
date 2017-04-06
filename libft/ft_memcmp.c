@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/08 21:37:00 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 22:22:20 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	unsigned char *str1;
+	unsigned char *str2;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (n-- > 0)
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
 	}
+	return (0);
 }

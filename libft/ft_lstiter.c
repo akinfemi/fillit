@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/22 16:12:56 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/22 16:19:21 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+void		ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	t_list	*node;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	node = lst;
+	if (!lst)
+		return ;
+	while (node)
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		f(node);
+		node = node->next;
 	}
 }

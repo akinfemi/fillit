@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/08 11:04:11 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 21:20:14 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+void		ft_putnbr_fd(int n, int fd)
 {
-	while (*tetrimino)
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
 	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
+		ft_putchar_fd('-', fd);
+		nb *= -1;
 	}
-	return ('\0');
-}
-
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	if (nb > 9)
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + '0', fd);
+	}
+	if (nb < 10)
+	{
+		ft_putchar_fd(nb + '0', fd);
+		return ;
 	}
 }

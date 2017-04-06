@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/01 23:03:43 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 22:07:26 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	unsigned char	*ds;
+	unsigned char	*sc;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	ds = (unsigned char *)dst;
+	sc = (unsigned char *)src;
+	if (sc < ds)
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		while (len-- > 0)
+			ds[len] = sc[len];
 	}
+	else
+		ft_memcpy(ds, sc, len);
+	return (ds);
 }

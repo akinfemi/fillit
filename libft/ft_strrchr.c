@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/01 13:20:00 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 22:08:26 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-char	get_char(char *tetrimino)
+char	*ft_strrchr(const char *s, int c)
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	char	nc;
+	char	*ptr;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	nc = (char)c;
+	ptr = 0;
+	if (nc == '\0')
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		while (*s)
+			s++;
+		return ((char *)s);
 	}
+	while (*s)
+	{
+		if (*s == nc)
+			ptr = (char *)s;
+		s++;
+	}
+	return (ptr);
 }

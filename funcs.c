@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 05:16:53 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/03/24 14:34:57 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/04/06 02:03:38 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void		place_tetrimino(char **m, char *tetrimino, int loc, int size)
 
 	map = *m;
 	size++;
-	(loc > size) ? (row = loc / size) : (row = 0);
-	(loc < size) ? (col = loc) : (col = loc % size);
+	row = (loc >= size) ? loc / size : 0;
+	col = (loc < size) ? loc : loc % size;
 	count = 0;
 	while (*tetrimino)
 	{
@@ -89,8 +89,8 @@ int			is_safe(char *map, char *tetrimino, int loc, int size)
 	int		count;
 
 	size++;
-	(loc > size) ? (row = loc / size) : (row = 0);
-	(loc < size) ? (col = loc) : (col = loc % size);
+	row = (loc >= size) ? loc / size : 0;
+	col = (loc < size) ? loc : loc % size;
 	count = 0;
 	while (*tetrimino)
 	{

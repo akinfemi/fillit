@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   btree_apply_postorder.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/04/06 01:04:13 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/04/06 01:24:44 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+void			btree_apply_postorder(t_btree *root, void (*applyf)(int))
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	t_btree		*node;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	node = root;
+	if (!node)
+		return ;
+	if (node->left == 0 && node->right == 0)
+		applyf(node->item);
+	else
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		btree_apply_postorder(node->left, applyf);
+		btree_apply_postorder(node->right, applyf);
+		applyf(node->item);
 	}
 }

@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/08 19:54:37 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 20:14:50 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	size_t		i;
+	char		*str;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	i = 0;
+	str = 0;
+	if (!s)
+		return (0);
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (0);
+	while (i < len && s[start] != '\0')
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		str[i] = s[start];
+		i++;
+		start++;
 	}
+	str[i] = '\0';
+	return (str);
 }

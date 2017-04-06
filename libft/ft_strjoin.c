@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/08 18:05:33 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 21:39:00 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
+	int		len;
+	char	*ans;
+	int		i;
 
-void	remove_tetrimino(char **m, char *tetrimino)
-{
-	char	c;
-	char	*map;
-
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	i = -1;
+	ans = 0;
+	if (!s1 || !s2)
+		return (0);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	ans = (char *)malloc(sizeof(char) * len + 1);
+	if (!ans)
+		return (0);
+	while (*s1)
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		ans[++i] = *s1;
+		s1++;
 	}
+	while (*s2)
+	{
+		ans[++i] = *s2;
+		s2++;
+	}
+	ans[++i] = '\0';
+	return (ans);
 }

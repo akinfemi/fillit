@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_tet.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 01:59:36 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/06 01:59:39 by aakin-al         ###   ########.fr       */
+/*   Created: 2017/03/08 17:48:29 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/03/08 21:40:58 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	get_char(char *tetrimino)
-{
-	while (*tetrimino)
-	{
-		if (ft_isalpha(*tetrimino) == 1)
-			return (*tetrimino);
-		tetrimino++;
-	}
-	return ('\0');
-}
-
-void	remove_tetrimino(char **m, char *tetrimino)
+void	ft_putendl_fd(char const *s, int fd)
 {
 	char	c;
-	char	*map;
 
-	c = get_char(tetrimino);
-	map = *m;
-	while (*map)
+	if (!s)
+		return ;
+	while (*s)
 	{
-		if (*map == c)
-			*map = '.';
-		map++;
+		c = *s;
+		write(fd, &c, 1);
+		s++;
 	}
+	write(fd, "\n", 1);
 }
